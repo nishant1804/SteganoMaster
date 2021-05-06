@@ -1,0 +1,222 @@
+
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+        crossorigin="anonymous">
+
+
+    <title>StegoChat</title>
+    <style type="text/css">
+        .col-md-8{
+            background-image: url("logo.jpg");
+        }
+
+    </style>
+    <link rel='shortcut icon' href='static/favicon.png' type='image/png' />
+
+
+</head>
+
+<body class="px-5 py-1">
+
+    <section id="showcase" class="pb-5 pt-2">
+    <div class="primary-overlay text-white">
+      <div class="container-fluid">
+        <div class="row text-dark align-items-center">
+          <div class="col-lg-8 offset-md-2 text-center" >
+            <img src="{{ url_for('static', filename='logomain.png')}}" alt="" class="img-fluid d-none d-lg-inline" style="max-height: 20rem;">
+            <img src="{{ url_for('static', filename='logomain.png')}}" alt="" class="img-fluid d-lg-none d-sm-inline d-none" style="max-height: 15rem;">
+            <img src="{{ url_for('static', filename='logomain.png')}}" alt="" class="img-fluid d-sm-none d-inline mx-auto" style="max-height: 10rem;">
+            <h1>Stegno Master</h1>
+        </div>
+          </div>
+      </div>
+    </div>
+  </section>
+  <div style=" margin-right: 35%; margin-left: 35%;">
+    <button class="btn btn-outline-dark btn-block px-5" data-toggle="modal" data-target="#myModal1">How to use?</button>
+            <button class="btn btn-dark btn-block px-5 one" data-toggle="modal" data-target="#myModal">About</button>
+  </div>
+  <br><br>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <p style="color: red;text-align: center;">{{error}}</p>
+  <div class="row">
+                <div class="col-md-4 offset-md-4">
+
+                    <form method=post enctype=multipart/form-data class="my-5">
+                      <br><br>
+                    <div class="modal-body">
+                      <div class="jumbotron">
+
+                        <strong><h4>Text in Image<i class="material-icons">security</i> </h4></strong>It is a free online Image Steganography application.
+                        Upload the image and hide whatever message you wish to.
+                        Decode an encoded image and see what hidden message awaits you!
+                      </div>
+
+                    </div>
+                <div class="custom-file mt-1 mb-5">
+                        <input type="file" id="myfile" class="custom-file-input" name=file>
+                        <label class="custom-file-label" for="myfile">Choose Image</label>
+                    </div>
+                    <script>
+                      document.querySelector('.custom-file-input').addEventListener('change',function(e){
+                      var fileName = document.getElementById("myfile").files[0].name;
+                      var nextSibling = e.target.nextElementSibling
+                      nextSibling.innerText = fileName
+                    })
+
+                    </script>
+                    <div class="d-flex justify-content-center ">
+                      <div class="btn-group">
+                      <button class="btn btn-dark px-5 " type=submit value=encrypt name="go">Hide</button>
+                      <br>
+                      <button class="btn btn-outline-dark px-5  " type=submit value=decrypt name="go">Unhide</button>
+
+                    </div>
+                  </div>
+
+
+
+                  <br><br><br><br>
+                    <div class="modal-body">
+                      <div class="jumbotron">
+                        <strong><h3>Image in Image<i class="material-icons">security</i></h3></strong><br> It is a free online Image Steganography application.
+                        Upload the image and hide whatever image you wish to.
+                        Decode an encoded image and see what hidden message awaits you!
+                      </div>
+
+                      <br>
+                    </div>
+
+                    <div class="custom-file mt-1 mb-5">
+                      <input type="file" id="myfirstfile" class="custom-file-input test1" name=file1>
+                      <label class="custom-file-label" for="myfilefile">Choose First Image</label>
+                  </div>
+                  <script>
+                    document.querySelector('.test1').addEventListener('change',function(e){
+                    var firstfileName = document.getElementById("myfirstfile").files[0].name;
+                    var nextfirstSibling = e.target.nextElementSibling
+                    nextfirstSibling.innerText = firstfileName
+                  })
+                  </script>
+
+                  <div class="custom-file mt-1 mb-5">
+                      <input type="file" id="mysecfile" class="custom-file-input test2" name=file2>
+                      <label class="custom-file-label" for="mysecfile">Choose Second Image</label>
+                  </div>
+                  <script>
+                    document.querySelector('.test2').addEventListener('change',function(e){
+                    var fileName = document.getElementById("mysecfile").files[0].name;
+                    var nextSibling = e.target.nextElementSibling
+                    nextSibling.innerText = fileName
+                  })
+                  </script>
+                <div class="d-flex justify-content-center ">
+                    <div class="btn-group">
+                    <button class="btn btn-outline-dark px-5" type=submit value=Imageencrypt name="go">Hide</button>
+                  </div>
+                </div>
+
+                <br><br><br><br>
+                    <div class="modal-body jumbotron">
+                      <strong><h4>Image Decrypt<i class="material-icons">security</i></h4></strong>
+                      Upload the encrypted image and decrypt the image which was hidden.
+                      <br>
+                    </div>
+                    <div class="custom-file mt-1 mb-5">
+                      <input type="file" id="mydefilefile" class="custom-file-input test3" name=file3>
+                      <label class="custom-file-label" for="mydefilefile">Choose Image for Decode</label>
+                  </div>
+                  <script>
+                    document.querySelector('.test3').addEventListener('change',function(e){
+                    var fileName = document.getElementById("mydefilefile").files[0].name;
+                    var nextSibling = e.target.nextElementSibling
+                    nextSibling.innerText = fileName
+                  })
+                  </script>
+                    <div class="d-flex justify-content-center ">
+                      <div class="btn-group">
+                      <button class="btn btn-outline-dark px-5" type=submit value=Imagedecrypt name="go">Un-Hide</button>
+                    </div>
+                  </div>
+            </form>
+
+                </div>
+
+            </div>
+            <div>
+
+
+            </div>
+            <br><br><br>
+        <footer class="text-center">
+          Major By Aranyani Sharma !<br><hr>
+
+        </footer>
+        <div class="modal" id="myModal">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Welcome to Stegno Master!</h5>
+                  <button class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                  <strong>Stegno Master</strong>  is a free online Image Steganography application.
+                  Upload the image and hide whatever message you wish to.
+                  Decode an encoded image and see what hidden message awaits you!
+                  <br>
+                </div>
+                <div class="modal-footer">
+                  <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal" id="myModal1">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Send invisble messages!</h5>
+                  <button class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                  <h5>Send invisible messages:</h5>
+                  <ol>
+                    <li>Upload an image</li>
+                    <li>Press the 'Hide' button</li>
+                  </ol>
+                  <br><br>
+                  <h5>Read invisible messages:</h5>
+                  <ol>
+                    <li>Upload an image</li>
+                    <li>Press the 'Unhide' button</li>
+                  </ol>
+                </div>
+                <div class="modal-footer">
+                  <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+          crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+          crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+          crossorigin="anonymous">
+
+
+        </script>
+
+
+
+</body>
+
+</html>
